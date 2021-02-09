@@ -341,6 +341,7 @@ function showGameOver(currentPlayer) {
         button.style.color="white";
         button.style.backgroundColor="red";
         button.style.fontSize="30px";
+        button.style.fontFamily="'Potta One', cursive";
         button.style.borderRadius="30px";
         button.style.border="5px solid white";
         var element = document.getElementById("button").appendChild(button).style.display="block";
