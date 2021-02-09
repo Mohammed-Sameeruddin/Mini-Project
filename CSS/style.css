@@ -45,7 +45,10 @@ hr {
 .playVerses {
     font-weight: bolder;
     font-size:larger;
-    margin:20px;
+    margin-top: 10px;
+    margin-left:20px;
+    margin-right:20px;
+    margin-bottom: 20px;
     letter-spacing: 2px;
     font-style: italic;
     color:yellow;
@@ -163,10 +166,10 @@ background-size: cover;
 }
 
 /* @media screen and (max-width:425px) {
-    .container {
-        margin-left:2px;
+    .playversus {
+        margin-top: 10px;
     }
-} */
+}  */
 
 
 
