@@ -230,48 +230,52 @@ function getId(myval) {
         }
     }else {
         currentPlayer = currentPlayer == player.man ? player.friend : player.man;
+        let turn = document.getElementById("turn");
+        if(currentPlayer=="X"){
+            turn.innerHTML="Player X's turn";
+        } else if(currentPlayer=="O"){
+            turn.innerHTML="Player O's turn";
+        }
     }
     function minimax(gameData, PLAYER){
-        // BASE
+        
         if( isWinner(gameData, player.computer) ) return { evaluation : +10 };
         if( isWinner(gameData, player.man)      ) return { evaluation : -10 };
         if( isTie(gameData)                     ) return { evaluation : 0 };
     
-        // LOOK FOR EMTY SPACES
+    
         let EMPTY_SPACES = getEmptySpaces(gameData);
     
-        // SAVE ALL MOVES AND THEIR EVALUATIONS
+        
         let moves = [];
     
-        // LOOP OVER THE EMPTY SPACES TO EVALUATE THEM
         for( let i = 0; i < EMPTY_SPACES.length; i++){
-            // GET THE ID OF THE EMPTY SPACE
+            
             let id = EMPTY_SPACES[i];
     
-            // BACK UP THE SPACE
+            
             let backup = gameData[id];
     
-            // MAKE THE MOVE FOR THE PLAYER
+            
             gameData[id] = PLAYER;
     
-            // SAVE THE MOVE'S ID AND EVALUATION
+        
             let move = {};
             move.id = id;
-            // THE MOVE EVALUATION
+            
             if( PLAYER == player.computer){
                 move.evaluation = minimax(gameData, player.man).evaluation;
             }else{
                 move.evaluation = minimax(gameData, player.computer).evaluation;
             }
     
-            // RESTORE SPACE
+            
             gameData[id] = backup;
     
-            // SAVE MOVE TO MOVES ARRAY
+        
             moves.push(move);
         }
     
-        // MINIMAX ALGORITHM
         let bestMove;
     
         if(PLAYER == player.computer){
@@ -400,6 +404,13 @@ function showGameOver(currentPlayer) {
             inputs[i].style.border="5px solid darkred";
             inputs[i].style.fontWeight="bold";
         }
+    }
+
+    let turn = document.getElementById("turn");
+    if(currentPlayer=="X"){
+        turn.innerHTML="X Wins";
+    } else if(currentPlayer=="O"){
+        turn.innerHTML="O Wins";
     }
     
 }
